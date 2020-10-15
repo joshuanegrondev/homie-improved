@@ -53,7 +53,7 @@ module.exports = function (app, passport, db) {
     db.collection('donatedItem').find({posterID: uid}).toArray((err, result) => {  //Find all posts then turn to array
     //   if (err) return console.log(err)
     // console.log(result)
-      res.render('unique-listings.ejs',{
+      res.render('claimedItems.ejs',{
         Listings: result
       })
     })
@@ -115,7 +115,7 @@ module.exports = function (app, passport, db) {
   })
 
   app.post('/shelter', function(req, res) { //GETTING SHELTER
-    let city = req.body.city.substr(0,1).toUpperCase() + req.body.city.substr(1).toLowerCase() 
+    let city = req.body.city.substr(0,1).toUpperCase() + req.body.city.substr(1).toLowerCase()
     console.log(req.body.city, "this is city")
     db.collection('shelters').find({city:city}).toArray((err, result) => {  //Find all posts then turn to array
     if (err) return console.log(err)
