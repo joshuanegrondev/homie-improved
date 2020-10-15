@@ -190,6 +190,16 @@ module.exports = function (app, passport, db) {
     })
   })
 
+  // delete ===========================================
+  app.delete('/deletePost', (req, res) => {
+      // console.log(req.body)
+      db.collection('donatedItem').findOneAndDelete({_id: ObjectId(req.body._id)}, (err, result) => {
+        if (err) return res.send(500, err)
+        res.send('Message deleted!')
+      })
+    })
+
+
 
   // =============================================================================
   // AUTHENTICATE (FIRST LOGIN) ==================================================

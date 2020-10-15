@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="css/animate.min.css">
   <link rel="stylesheet" href="css/quill.snow.css">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/f776ee7346.js" crossorigin="anonymous"></script>
 </head>
 
 <!-- BODY -->
@@ -136,6 +137,7 @@
                 <form class="" action="mailto:<%= Listings[i].email %>" method="get">
                   <input type="submit" name="" value="Get Item">
                 </form>
+                <i id="<%= Listings[i]._id %>" class="fa fa-trash" aria-hidden="true"></i>
               </div>
             </div>
           </li>

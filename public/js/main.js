@@ -8,6 +8,25 @@ if (document.getElementById("searchButton")){
   }
 
 var claim = document.getElementById('claim')
+var trash = document.getElementsByClassName("fa-trash");
+
+Array.from(trash).forEach(function(element) {
+      element.addEventListener('click', function(){
+        let _id = this.getAttribute('id')
+
+        fetch('deletePost', {
+          method: 'delete',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            '_id': _id
+          })
+        }).then(function (response) {
+          window.location.reload()
+        })
+      });
+});
 
 Array.from(claim).forEach(function(element) {
       element.addEventListener('click', function(){
