@@ -1,5 +1,8 @@
-<!-- ![img](.png)
-![img](.png) -->
+![img](homie.png)
+<!-- ![img](.png) -->
+
+#Link
+- https://homieapp-rc.herokuapp.com/
 
 ## Installation
 
@@ -17,3 +20,11 @@ Modified from Scotch.io's auth tutorial
 
 
 # Welcome to the HOMIE App!
+
+- Features:
+- Search for shelters (Boston for demonstration only)
+- Post Jobs
+- Post Items
+- Track posted items
+- Search Jobs & Items
+- Apply for Section 8 & Food Stamps
