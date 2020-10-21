@@ -108,25 +108,26 @@
               <h3 class="text-black mb-5 border-bottom pb-2">Thanks for donating, please input information below</h3>
               <div class="form-group">
                 <label for="company-website-tw d-block">Upload Image</label> <br>
+                <p>Make sure to include a picture file, otherwise it will not work!</p>
                 <label class="btn btn-primary btn-md btn-file">
-                  Browse File<input type="file" hidden name="file-to-upload">
+                  Browse File <input type="file" hidden name="file-to-upload" required>
                 </label>
               </div>
               <div class="form-group">
                 <label for="email">Email: </label>
-                <input type="text" class="form-control" id="email" placeholder="Type your email" name="Email">
+                <input type="email" class="form-control" id="email" placeholder="Type your email" name="Email" required>
               </div>
               <div class="form-group">
                 <label for="Item-title">Item: </label>
-                <input type="text" class="form-control" id="job-title" placeholder="What's you item?" name="ItemTitle">
+                <input type="text" class="form-control" id="job-title" placeholder="What's you item?" name="ItemTitle" required>
               </div>
               <div class="form-group">
                 <label for="job-location">City: </label>
-                <input type="text" class="form-control" id="job-location" placeholder="City that you're located in." name="ItemLocation">
+                <input type="text" class="form-control" id="job-location" placeholder="City that you're located in." name="ItemLocation" required>
               </div>
               <div class="form-group">
                 <label for="job-description">Description</label>
-                <input type="text" class="form-control" id="editor-1" placeholder="Describe" name="ItemDescription">
+                <input type="text" class="form-control" id="editor-1" placeholder="Describe" name="ItemDescription" required>
               </div>
               <div class="row align-items-center mb-5">
                 <div class="col-lg-4 ml-auto">

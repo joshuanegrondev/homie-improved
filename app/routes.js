@@ -79,14 +79,30 @@ module.exports = function (app, passport, db) {
     })
   })
 
-  app.get('/searchItems', function (req, res) { //search my mongodb
+  app.post('/searchItems', function (req, res) { //search my mongodb
 
-    var q = req.query.q; //example q = "Me"
+    var q = req.body.search; //example q = "Me"
+    console.log(q)
       db.collection('donatedItem').find({
-        itemTitle: q
+        itemTitle: q.toLowerCase()
       }).toArray((err, result) => {
         res.render('searchItems.ejs',{
-            Listings: result
+            Listings: result,
+            yourItem: req.body.search
+        })
+      })
+  })
+
+  app.post('/searchJobs', function (req, res) { //search my mongodb
+
+    var job = req.body.jobSearched; //example q = "Me"
+    console.log(job)
+      db.collection('jobs').find({
+        jobTitle: job.toLowerCase()
+      }).toArray((err, result) => {
+        res.render('searchJobs.ejs',{
+            Jobs: result,
+            yourJob: job
         })
       })
   })
@@ -121,7 +137,8 @@ module.exports = function (app, passport, db) {
     if (err) return console.log(err)
     console.log(result, "This is results")
       res.render('shelter-listings.ejs', {
-      shelters : result
+      shelters : result,
+      city: city
       })
     })
   })
@@ -150,7 +167,7 @@ module.exports = function (app, passport, db) {
   app.post('/listings', isLoggedIn, upload.single("file-to-upload"), (req, res) => {
     console.log(req.file.filename)
     let uid = ObjectId(req.session.passport.user)
-    db.collection('donatedItem').save({posterID: uid, image: 'images/uploads/' + req.file.filename, email: req.body.Email, itemTitle: req.body.ItemTitle, itemlocation: req.body.ItemLocation, itemvalue: req.body.ItemValue, itemdescription: req.body.ItemDescription, claimedBy: null, Date: new Date()}, (err, result) => {
+    db.collection('donatedItem').save({posterID: uid, image: 'images/uploads/' + req.file.filename, email: req.body.Email, itemTitle: req.body.ItemTitle.toLowerCase(), itemlocation: req.body.ItemLocation, itemvalue: req.body.ItemValue, itemdescription: req.body.ItemDescription, claimedBy: null, Date: new Date()}, (err, result) => {
           if (err) return res.send(err)
           // res.send(result)
           res.redirect('/item-listings');
@@ -162,7 +179,7 @@ module.exports = function (app, passport, db) {
   app.post('/jobListings', isLoggedIn, upload.single("file-to-upload"), (req, res) => {
     console.log()
     let uid = ObjectId(req.session.passport.user)
-    db.collection('jobs').save({posterID: uid, email: req.body.Email, jobTitle: req.body.jobTitle, jobLocation: req.body.jobLocation, jobDescription: req.body.jobDescription, Date: new Date()}, (err, result) => {
+    db.collection('jobs').save({posterID: uid, email: req.body.Email, jobTitle: req.body.jobTitle.toLowerCase(), jobLocation: req.body.jobLocation, jobDescription: req.body.jobDescription, Date: new Date()}, (err, result) => {
           if (err) return res.send(err)
           // res.send(result)
           res.redirect('/jobs-listings');

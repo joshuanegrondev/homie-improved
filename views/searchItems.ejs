@@ -84,7 +84,7 @@
         </div>
       </div>
     </header>
-    
+
     <!-- MAIN SECTION -->
     <section class="home-section section-hero overlay bg-image" style="background-color: black" id="home-section" id="home-section">
       <div class="container">
@@ -107,9 +107,9 @@
                 <div class="col-md-12 popular-keywords">
                   <h3>Trending Keywords:</h3>
                   <ul class="keywords list-unstyled m-0 p-0">
-                    <li><a href="#" class="">Masks</a></li>
-                    <li><a href="#" class="">Medical Supplies</a></li>
-                    <li><a href="#" class="">Diapers</a></li>
+                    <li><a href="#" class="">keywords</a></li>
+                    <li><a href="#" class=""></a></li>
+                    <li><a href="#" class=""></a></li>
                   </ul>
                 </div>
               </div> -->
@@ -131,20 +131,30 @@
           </div>
         </div>
         <ul class="job-listings mb-5">
-          <% for(var i=0; i<Listings.length; i++) {%>
-          <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-            <a href="job-single?id=<%= Listings[i]._id %>"></a>
-            <div class="job-listing-logo">
-              <img src="<%=Listings[i].image%>" alt="Free Website Template by Free-Template.co" class="img-fluid">
-            </div>
-            <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
-              <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
-                <h2> <%= Listings[i].itemTitle %> </h2>
-                <strong><%= Listings[i].itemlocation %> </strong> Description: <strong><%= Listings[i].itemdescription %></strong>
+          <% if(Listings.length !== 0) {%>
+            <% for(var i=0; i<Listings.length; i++) {%>
+            <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+              <a href="job-single?id=<%= Listings[i]._id %>"></a>
+              <div class="job-listing-logo">
+                <img src="<%=Listings[i].image%>" alt="Free Website Template by Free-Template.co" class="img-fluid">
               </div>
-            </div>
-          </li>
-          <% } %>
+              <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+                <div class="job-listing-position custom-width w-50 mb-3 mb-sm-0">
+                  <h2> <%= Listings[i].itemTitle %> </h2>
+                  <strong><%= Listings[i].itemlocation %> </strong> Description: <strong><%= Listings[i].itemdescription %></strong>
+                </div>
+              </div>
+            </li>
+            <% } %>
+          <% } else  {%>
+            <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
+              <div class="job-listing-about d-sm-flex custom-width w-100 justify-content-between mx-4">
+                <div class="job-listing-positison custom-width w-50 mb-3 mb-sm-0">
+                  <h2> No available Items for <%= yourItem %></h2>
+                </div>
+              </div>
+            </li>
+            <% } %>
         </ul>
       </div>
     </section>
