@@ -1,11 +1,11 @@
 // THIS IS THE QUERY DB AND THIS IS HOW YOU SEARCH
-if (document.getElementById("searchButton")){
-  var searchButton = document.getElementById("searchButton")
-  searchButton.addEventListener("click", function(){
-    const itemTitle = document.getElementById("listingsItemName").value
-    window.location.href=`/searchItems?q=${itemTitle}`
-    })
-  }
+// if (document.getElementById("searchButton")){
+//   var searchButton = document.getElementById("searchButton")
+//   searchButton.addEventListener("click", function(){
+//     const itemTitle = document.getElementById("listingsItemName").value
+//     window.location.href=`/searchItems?q=${itemTitle}`
+//     })
+//   }
 
 var claim = document.getElementById('claim')
 var trash = document.getElementsByClassName("fa-trash");
