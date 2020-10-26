@@ -48,13 +48,14 @@ module.exports = function (app, passport, db) {
   })
 
   app.get('/your-item', function (req, res) {
-    console.log(req.session.passport.user)
+    // console.log(req.session.passport.user)
     let uid = ObjectId(req.session.passport.user)
     db.collection('donatedItem').find({posterID: uid}).toArray((err, result) => {  //Find all posts then turn to array
     //   if (err) return console.log(err)
     // console.log(result)
       res.render('claimedItems.ejs',{
-        Listings: result
+        Listings: result,
+        user: uid
       })
     })
   })
@@ -110,7 +111,6 @@ module.exports = function (app, passport, db) {
   app.get('/job-single', function (req, res) {
     const id = req.query.id
     console.log("job id:", id)
-
     db.collection('donatedItem').findOne({
       _id: ObjectId(id)
     },
