@@ -50,12 +50,12 @@ module.exports = function (app, passport, db) {
   app.get('/your-item', function (req, res) {
     // console.log(req.session.passport.user)
     let uid = ObjectId(req.session.passport.user)
-    db.collection('donatedItem').find({posterID: uid}).toArray((err, result) => {  //Find all posts then turn to array
-    //   if (err) return console.log(err)
-    // console.log(result)
+    db.collection('donatedItem').find({claimedBy: uid}).toArray((err, result) => {  //Find all posts then turn to array
+      if (err) return console.log(err)
+    console.log('THIS IS RESULTS', result)
       res.render('claimedItems.ejs',{
-        Listings: result,
-        user: uid
+        Listings: result
+        // user: uid
       })
     })
   })
