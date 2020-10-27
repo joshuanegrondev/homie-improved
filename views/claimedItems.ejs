@@ -135,11 +135,9 @@
                 <!-- <h1><%= Listings[i].email %></h1> -->
                 <h2> <%= Listings[i].itemTitle %> </h2>
                 <strong><%= Listings[i].itemlocation %> </strong> Posted On: <strong><%=Listings[i].Date%></strong>
-                <% if (Listings[i].posterID.toString() !== user.toString()) { %>
                 <form class="" action="mailto:<%= Listings[i].email %>" method="get">
                   <input type="submit" name="" value="Get Item">
                 </form>
-                <% } %>
                 <i id="<%= Listings[i]._id %>" class="fa fa-trash" aria-hidden="true"></i>
               </div>
             </div>
