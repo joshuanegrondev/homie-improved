@@ -200,7 +200,8 @@ module.exports = function (app, passport, db) {
       db.collection('donatedItem').find({posterID: uid}).toArray((err, result) => {
         if (err) return res.send(err)
         res.render('claimedItems.ejs', {
-          Listings: result
+          Listings: result,
+          user: uid
         })
         console.log(result)
       })
